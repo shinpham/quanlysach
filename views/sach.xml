@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="sach_list_action" >
+            <field name="name">Cuốn sách</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlythuvien.sach</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                 Thêm mới sách
+                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sach_tree_view" >
+            <field name="name">sach.tree</field>
+            <field name="model">quanlythuvien.sach</field>
+            <field name="arch" type="xml">
+                <tree string="Sach Tree">
+                    <field name="tensach"/>
+                    <!--<field name="mota"/>-->
+                    <field name="tacgia"/>
+                    <field name="nhaxuatban"/>
+                    <field name="theloai_chinh"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sach_form_view">
+            <field name="name">Thông tin cuốn sách</field>
+            <field name="model">quanlythuvien.sach</field>
+            <field name="arch" type="xml">
+                <form string="Sach Form">
+                <header>
+                    <field name="tinh_trang_kho" widget="statusbar"/>
+                    <field name="state" widget="statusbar"/>
+                    <field name="tinh_trang_kho" widget="statusbar"/>
+                    <button string="Choose New" type="object" name="new_progressbar" attrs="{'invisible': [('state', '=', 'new')]}"/>
+	                <button string="Choose Open" type="object" name="open_progressbar" attrs="{'invisible': [('state','=','open')]}"/>
+                </header>
+                    <sheet>
+                        <notebook>
+                            <page string="Quyển sách">
+                                <group>
+                                    <field name="tensach"/>
+                                    <field name="theloai_chinh"/>
+                                    <field name="nhaxuatban"/>
+                                    <field name="length"/>
+                                    <!--<field name="status"/>-->
+                                    <field name="soluongsach"/>
+                                    <field name="gia"/>
+                                    <field name="soluong"/>
+                                    <field name="tonggia"/>
+                                    <field name="hethang"/>
+                                    <!--<field name="so"/>-->
+                                </group>
+                            </page>
+                            <page string="Giới thiệu">
+                                <group>
+                                    <field name="tacgia"/>
+                                    <field name="mota"/>
+                                    <field name="namxuatban"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sach_search_view" model="ir.ui.view">
+           <field name="name">Seach Sách</field>
+           <field name="model">quanlythuvien.sach</field>
+            <field name="arch" type="xml">
+                <search string="Search Sách">
+              <field name="tensach" string="Tên sách"/>
+            </search>
+           </field>
+        </record>
+
+         <menuitem id="sach_menu" name="Sách" parent="quanlysach_menu"
+      action="sach_list_action" sequence="1"/>
+
+    </data>
+</odoo>

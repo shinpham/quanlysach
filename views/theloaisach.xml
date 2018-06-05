@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="theloaisach_list_action">
+            <field name="name">Thể loại sách</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlythuvien.theloaisach</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                 Thêm mới thể loại sách
+                 </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="theloaisach_tree_view">
+            <field name="name">theloaisach.tree</field>
+            <field name="model">quanlythuvien.theloaisach</field>
+            <field name="arch" type="xml">
+                <tree string="The Loai Sach Tree">
+                    <field name="tentheloai"/>
+                    <field name="mota"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="theloaisach_form_view" >
+            <field name="name">theloaisach.form</field>
+            <field name="model">quanlythuvien.theloaisach</field>
+            <field name="arch" type="xml">
+                <form string="The Loai Sach Form">
+                    <sheet>
+                        <group>
+                             <field name="tentheloai"/>
+                             <field name="mota"/>
+                             <!--<field name="sach" widget="many2many_tags"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+       <menuitem id="theloaisach_menu" name="Thể loại Sách" parent="quanlysach_menu"
+      action="theloaisach_list_action" sequence="2"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="theloaisach_tree_view">
+            <field name="name">ImportFile.tree</field>
+            <field name="model">quanlythuvien.reader.excel</field>
+            <field name="arch" type="xml">
+                <tree string="The Loai Sach Tree">
+                    <field name="name"/>
+                    <field name="ho"/>
+                    <field name="age"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="main_file_import_form_view" model="ir.ui.view">
+            <field name="name">Import File</field>
+            <field name="model">quanlythuvien.reader.excel</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="ho"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="excel_file"/>
+                            <button name="import_excel" type="object" string="Import"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="main_file_import_act" model="ir.actions.act_window">
+            <field name="name">Import File</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quanlythuvien.reader.excel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="main_file_import_menu" name="Import File" parent="quanlysach_menu" action="main_file_import_act" sequence="3"/>
+
+    </data>
+</odoo>
